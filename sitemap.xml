@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://premiummen.com/</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Featured Section -->
+    <url>
+        <loc>https://premiummen.com/#featured</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Fashion Section -->
+    <url>
+        <loc>https://premiummen.com/#fashion</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Lifestyle Section -->
+    <url>
+        <loc>https://premiummen.com/#lifestyle</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Tech Section -->
+    <url>
+        <loc>https://premiummen.com/#tech</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Fitness Section -->
+    <url>
+        <loc>https://premiummen.com/#fitness</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Business Section -->
+    <url>
+        <loc>https://premiummen.com/#business</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Watches Section -->
+    <url>
+        <loc>https://premiummen.com/#watches</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>

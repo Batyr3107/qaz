@@ -1,0 +1,25 @@
+# Premium Men - Robots.txt
+# https://premiummen.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin pages (future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://premiummen.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 0
+
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /

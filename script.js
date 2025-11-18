@@ -132,13 +132,171 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===========================
-    // SEARCH BUTTON
+    // SEARCH MODAL & FUNCTIONALITY
     // ===========================
     const searchBtn = document.getElementById('searchBtn');
+    const searchModal = document.getElementById('searchModal');
+    const searchModalOverlay = document.getElementById('searchModalOverlay');
+    const searchClose = document.getElementById('searchClose');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
 
+    // Search database (all content on the site)
+    const searchDatabase = [
+        { category: 'Мода', icon: '👔', title: 'Минимализм и элегантность', description: 'Как создать базовый гардероб, который подчеркнет ваш статус и индивидуальность', url: '#fashion' },
+        { category: 'Мода', icon: '🎩', title: 'Идеальная посадка', description: 'Секреты выбора костюма премиум класса', url: '#fashion' },
+        { category: 'Мода', icon: '👞', title: 'Детали решают всё', description: 'Must-have аксессуары этого сезона', url: '#fashion' },
+        { category: 'Стиль жизни', icon: '✈️', title: 'Эксклюзивные направления', description: 'Топ-10 мест для истинных ценителей', url: '#lifestyle' },
+        { category: 'Стиль жизни', icon: '🏠', title: 'Мужское пространство', description: 'Обустройство дома с характером и стилем', url: '#lifestyle' },
+        { category: 'Стиль жизни', icon: '🎨', title: 'Искусство и коллекции', description: 'Инвестиции в культурное наследие', url: '#lifestyle' },
+        { category: 'Стиль жизни', icon: '🎭', title: 'Искусство жить красиво', description: 'Философия современного джентльмена', url: '#featured' },
+        { category: 'Технологии', icon: '🏎️', title: 'Новинки суперкаров', description: 'Обзор самых желанных автомобилей года', url: '#tech' },
+        { category: 'Технологии', icon: '📱', title: 'Умные технологии', description: 'Топ устройств для дома и офиса', url: '#tech' },
+        { category: 'Технологии', icon: '🎧', title: 'Hi-Fi системы', description: 'Звук премиум качества', url: '#tech' },
+        { category: 'Фитнес', icon: '💪', title: 'Программы для профи', description: 'Эффективные тренировки от экспертов', url: '#fitness' },
+        { category: 'Фитнес', icon: '🥗', title: 'Рацион чемпиона', description: 'Сбалансированное питание для результата', url: '#fitness' },
+        { category: 'Фитнес', icon: '🧘', title: 'Баланс тела и духа', description: 'Восстановление и профилактика', url: '#fitness' },
+        { category: 'Бизнес', icon: '💼', title: 'От стартапа к империи', description: 'Истории успеха и практические советы', url: '#business' },
+        { category: 'Бизнес', icon: '📈', title: 'Умное вложение', description: 'Диверсификация портфеля', url: '#business' },
+        { category: 'Бизнес', icon: '👥', title: 'Навыки управления', description: 'Как вдохновлять команду', url: '#business' },
+        { category: 'Бизнес', icon: '🎯', title: 'Стратегии успеха', description: 'Секреты от топ-менеджеров', url: '#featured' },
+        { category: 'Часы', icon: '⌚', title: 'Легендарные модели', description: 'Часы, которые меняют статус', url: '#watches' },
+        { category: 'Часы', icon: '⏱️', title: 'Искусство часового дела', description: 'История великих мануфактур', url: '#watches' },
+        { category: 'Часы', icon: '💎', title: 'Часы как актив', description: 'Модели, растущие в цене', url: '#watches' },
+        { category: 'Часы', icon: '🏆', title: '10 легендарных часов', description: 'Для коллекционера', url: '#featured' }
+    ];
+
+    let selectedResultIndex = -1;
+
+    // Open search modal
+    function openSearchModal() {
+        searchModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => searchInput.focus(), 100);
+    }
+
+    // Close search modal
+    function closeSearchModal() {
+        searchModal.classList.remove('active');
+        document.body.style.overflow = '';
+        searchInput.value = '';
+        selectedResultIndex = -1;
+        renderSearchResults([]);
+    }
+
+    // Render search results
+    function renderSearchResults(results) {
+        if (results.length === 0) {
+            searchResults.innerHTML = `
+                <div class="search-empty">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <p>${searchInput.value ? 'Ничего не найдено' : 'Начните вводить для поиска'}</p>
+                </div>
+            `;
+            return;
+        }
+
+        const html = results.map((result, index) => `
+            <div class="search-result-item ${index === selectedResultIndex ? 'active' : ''}" data-index="${index}" data-url="${result.url}">
+                <div class="search-result-icon">${result.icon}</div>
+                <div class="search-result-content">
+                    <div class="search-result-category">${result.category}</div>
+                    <div class="search-result-title">${highlightMatch(result.title, searchInput.value)}</div>
+                    <div class="search-result-description">${highlightMatch(result.description, searchInput.value)}</div>
+                </div>
+            </div>
+        `).join('');
+
+        searchResults.innerHTML = html;
+
+        // Add click handlers
+        document.querySelectorAll('.search-result-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const url = item.dataset.url;
+                closeSearchModal();
+                window.location.href = url;
+            });
+        });
+    }
+
+    // Highlight matching text
+    function highlightMatch(text, query) {
+        if (!query) return text;
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<mark style="background-color: rgba(201, 169, 97, 0.3); color: inherit; padding: 0 2px; border-radius: 2px;">$1</mark>');
+    }
+
+    // Perform search
+    function performSearch(query) {
+        if (!query) {
+            renderSearchResults([]);
+            return;
+        }
+
+        const lowerQuery = query.toLowerCase();
+        const results = searchDatabase.filter(item => {
+            return (
+                item.title.toLowerCase().includes(lowerQuery) ||
+                item.description.toLowerCase().includes(lowerQuery) ||
+                item.category.toLowerCase().includes(lowerQuery)
+            );
+        });
+
+        renderSearchResults(results);
+        selectedResultIndex = -1;
+    }
+
+    // Event listeners
     if (searchBtn) {
-        searchBtn.addEventListener('click', function() {
-            showNotification('Функция поиска будет доступна в ближайшее время!', 'info');
+        searchBtn.addEventListener('click', openSearchModal);
+    }
+
+    if (searchModalOverlay) {
+        searchModalOverlay.addEventListener('click', closeSearchModal);
+    }
+
+    if (searchClose) {
+        searchClose.addEventListener('click', closeSearchModal);
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce((e) => {
+            performSearch(e.target.value);
+        }, 200));
+
+        searchInput.addEventListener('keydown', (e) => {
+            const results = document.querySelectorAll('.search-result-item');
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectedResultIndex = Math.min(selectedResultIndex + 1, results.length - 1);
+                updateSelectedResult();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectedResultIndex = Math.max(selectedResultIndex - 1, -1);
+                updateSelectedResult();
+            } else if (e.key === 'Enter' && selectedResultIndex >= 0) {
+                e.preventDefault();
+                const selectedItem = results[selectedResultIndex];
+                if (selectedItem) {
+                    selectedItem.click();
+                }
+            }
+        });
+    }
+
+    function updateSelectedResult() {
+        const results = document.querySelectorAll('.search-result-item');
+        results.forEach((item, index) => {
+            if (index === selectedResultIndex) {
+                item.classList.add('active');
+                item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            } else {
+                item.classList.remove('active');
+            }
         });
     }
 
@@ -205,7 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===========================
-    // CARD LINK CLICKS
+    // CARD LINK CLICKS & SHARE
     // ===========================
     const cardLinks = document.querySelectorAll('.card-link, .featured-link');
 
@@ -215,6 +373,135 @@ document.addEventListener('DOMContentLoaded', function() {
             showNotification('Статья откроется в ближайшее время!', 'info');
         });
     });
+
+    // Social share functionality
+    function shareOnSocial(platform, title, url) {
+        const encodedUrl = encodeURIComponent(url);
+        const encodedTitle = encodeURIComponent(title);
+
+        const shareUrls = {
+            vk: `https://vk.com/share.php?url=${encodedUrl}&title=${encodedTitle}`,
+            telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
+            whatsapp: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
+            twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+            facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
+        };
+
+        if (shareUrls[platform]) {
+            window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+            trackEvent('Social', 'Share', platform);
+        }
+    }
+
+    // Add share menu to cards (on hover)
+    document.querySelectorAll('.card, .featured-card').forEach(card => {
+        const title = card.querySelector('.card-title, .featured-title')?.textContent || '';
+        const link = card.querySelector('.card-link, .featured-link')?.getAttribute('href') || window.location.href;
+
+        // Create share button (hidden by default, shown on hover)
+        const shareBtn = document.createElement('button');
+        shareBtn.className = 'card-share-btn';
+        shareBtn.innerHTML = `
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+        `;
+        shareBtn.setAttribute('aria-label', 'Поделиться');
+
+        shareBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showShareMenu(title, window.location.origin + link, e.target);
+        });
+
+        const footer = card.querySelector('.card-footer, .featured-meta');
+        if (footer) {
+            footer.appendChild(shareBtn);
+        }
+    });
+
+    function showShareMenu(title, url, button) {
+        // Check if native share is available
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                url: url
+            }).then(() => {
+                showNotification('Спасибо за то, что делитесь!', 'success');
+                trackEvent('Social', 'Share', 'Native');
+            }).catch(() => {
+                // User cancelled or error occurred
+            });
+        } else {
+            // Show custom share menu
+            const menu = document.createElement('div');
+            menu.className = 'share-menu';
+            menu.innerHTML = `
+                <button class="share-option" data-platform="vk">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.45 14.94h-1.33c-.52 0-.68-.42-1.61-1.35-.82-.77-1.18-.87-1.38-.87-.28 0-.37.09-.37.51v1.23c0 .33-.1.52-1 .52-1.49 0-3.14-.9-4.31-2.6-1.75-2.5-2.23-4.39-2.23-4.77 0-.2.09-.39.51-.39h1.33c.38 0 .52.18.67.59.74 2.15 1.97 4.03 2.48 4.03.19 0 .28-.09.28-.57v-2.22c-.06-.99-.58-1.08-.58-1.43 0-.16.13-.32.34-.32h2.09c.32 0 .43.17.43.54v2.99c0 .32.14.43.23.43.19 0 .34-.11.69-.46 1.07-1.2 1.84-3.05 1.84-3.05.1-.21.28-.39.66-.39h1.33c.4 0 .49.2.4.54-.16.78-1.85 3.3-1.85 3.3-.15.26-.21.37 0 .66.15.21.64.62 1.21 1.24.54.58 1.08 1.17 1.21 1.54.12.38-.07.57-.48.57z"/>
+                    </svg>
+                    ВКонтакте
+                </button>
+                <button class="share-option" data-platform="telegram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                    </svg>
+                    Telegram
+                </button>
+                <button class="share-option" data-platform="whatsapp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    WhatsApp
+                </button>
+                <button class="share-option" data-platform="copy">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Копировать ссылку
+                </button>
+            `;
+
+            // Position menu near the button
+            const rect = button.getBoundingClientRect();
+            menu.style.cssText = `
+                position: fixed;
+                top: ${rect.bottom + 10}px;
+                left: ${rect.left - 150}px;
+                z-index: 9999;
+            `;
+
+            document.body.appendChild(menu);
+
+            // Add click handlers
+            menu.querySelectorAll('.share-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    const platform = option.getAttribute('data-platform');
+                    if (platform === 'copy') {
+                        copyToClipboard(url);
+                        showNotification('Ссылка скопирована!', 'success');
+                    } else {
+                        shareOnSocial(platform, title, url);
+                    }
+                    menu.remove();
+                });
+            });
+
+            // Close menu when clicking outside
+            setTimeout(() => {
+                document.addEventListener('click', function closeMenu() {
+                    menu.remove();
+                    document.removeEventListener('click', closeMenu);
+                }, 100);
+            });
+        }
+    }
 
     // ===========================
     // SCROLL ANIMATIONS
@@ -515,13 +802,54 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===========================
-    // DARK MODE TOGGLE (Future Feature)
+    // DARK MODE TOGGLE
     // ===========================
+    const themeToggle = document.getElementById('themeToggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (prefersDarkScheme.matches) {
-        console.log('User prefers dark mode (future feature)');
+    // Get saved theme or use system preference
+    function getSavedTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        return prefersDarkScheme.matches ? 'dark' : 'light';
     }
+
+    // Apply theme
+    function applyTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+
+        // Update meta theme-color
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', theme === 'dark' ? '#1a1d23' : '#2c3e50');
+        }
+    }
+
+    // Toggle theme
+    function toggleTheme() {
+        const currentTheme = document.body.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        applyTheme(newTheme);
+        showNotification(`Тема переключена на ${newTheme === 'dark' ? 'тёмную' : 'светлую'}`, 'success');
+    }
+
+    // Initialize theme
+    applyTheme(getSavedTheme());
+
+    // Event listener for theme toggle
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // Listen for system theme changes
+    prefersDarkScheme.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
 
 });
 

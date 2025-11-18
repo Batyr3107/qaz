@@ -1,15 +1,31 @@
 # ◆ PREMIUM MEN - Элитный Портал для Современного Мужчины
 
-> Премиум веб-сайт уровня 10/10 со светлой темой и элегантным дизайном мирового класса
+> Премиум веб-сайт уровня 10/10 с адаптивной темой и элегантным дизайном мирового класса
 
-[![Version](https://img.shields.io/badge/version-2.0-blue.svg)](https://github.com)
+[![Version](https://img.shields.io/badge/version-3.0-blue.svg)](https://github.com)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-production%20ready-success.svg)](README.md)
+[![PWA](https://img.shields.io/badge/PWA-ready-brightgreen.svg)](manifest.json)
+[![Theme](https://img.shields.io/badge/theme-light%20%26%20dark-purple.svg)](styles.css)
+
+## 🆕 Что нового в версии 3.0
+
+- ✨ **Функциональный поиск** - модальное окно с instant search и keyboard navigation
+- 🌓 **Dark Mode** - переключатель светлой/тёмной темы с автосохранением
+- 🖼️ **Реальные изображения** - через Unsplash API вместо градиентов
+- 🔗 **Social Sharing** - кнопки шаринга (VK, Telegram, WhatsApp, Copy)
+- 📱 **PWA Ready** - manifest.json для установки как приложение
+- 🔍 **SEO PRO** - Schema.org, robots.txt, sitemap.xml
+- 🔒 **Security Headers** - XSS Protection, Frame Options, CSP ready
+- 📊 **Analytics Ready** - Yandex Metrika интеграция
+- ⚡ **Font Optimization** - preload для критических шрифтов
 
 ## ✨ Ключевые Особенности
 
 ### 🎨 Дизайн & UX
-- **Светлая премиум тема** - Элегантный светлый дизайн с золотыми акцентами (#c9a961)
+- **🆕 Dual Theme System** - Светлая и тёмная темы
+  - **Light Theme**: Белый фон (#ffffff) с золотыми акцентами (#c9a961)
+  - **Dark Theme**: Тёмный фон (#1a1d23) с золотыми акцентами (#d4a76a)
 - **Адаптивный дизайн** - Pixel-perfect на всех устройствах (Desktop, Tablet, Mobile)
 - **Плавные анимации** - 60 FPS transitions и micro-interactions
 - **Премиум типографика** - Playfair Display для заголовков, Inter для текста
@@ -32,17 +48,19 @@
 
 ### ⚡ Функциональность
 
+- ✅ **🆕 Search Modal** - Функциональный поиск по всему контенту
+- ✅ **🆕 Dark Mode** - Переключение темы с сохранением в LocalStorage
+- ✅ **🆕 Social Share** - Кнопки шаринга на всех карточках
 - ✅ **Preloader** - Элегантная загрузка страницы
 - ✅ **Scroll-to-top** - Кнопка быстрого возврата
 - ✅ **Bookmarks** - Сохранение закладок в LocalStorage
 - ✅ **Progress bar** - Индикатор прогресса чтения
-- ✅ **Search button** - Кнопка поиска (placeholder)
 - ✅ **Notifications** - Система уведомлений с 4 типами
 - ✅ **Mobile menu** - Responsive hamburger menu
 - ✅ **Smooth scroll** - Плавная прокрутка по якорям
 - ✅ **Active nav** - Автоподсветка активного раздела
 - ✅ **Parallax** - Параллакс эффекты на hero shapes
-- ✅ **Keyboard shortcuts** - Ctrl+K для поиска, Escape для закрытия меню
+- ✅ **Keyboard shortcuts** - Ctrl+K для поиска, ↑↓ навигация, ESC, Enter
 
 ### 🔧 Технический стек
 
@@ -55,20 +73,22 @@ JavaScript ██████████████████  100%
 - **HTML5** - Семантическая разметка, доступность (ARIA labels)
 - **CSS3** - Flexbox, Grid, Custom Properties, Animations
 - **Vanilla JavaScript** - Без зависимостей, чистый код
-- **Google Fonts** - Playfair Display & Inter
+- **Google Fonts** - Playfair Display & Inter (preloaded)
+- **🆕 Unsplash API** - Реальные качественные изображения
 
 ### 📊 Статистика проекта
 
 ```
-Файлов:         4 (HTML, CSS, JS, README)
-Строк кода:   ~2,600+
-HTML:           741 строк
-CSS:          1,243 строк
-JavaScript:     637 строк
+Файлов:         7 (HTML, CSS, JS, manifest, robots, sitemap, README)
+Строк кода:   ~3,100+
+HTML:           915+ строк
+CSS:          1,400+ строк
+JavaScript:     800+ строк
 Категорий:        6
 Карточек:        21 (18 обычных + 3 featured)
 Анимаций:       10+
-SVG иконок:     30+
+SVG иконок:     40+
+Изображений:    21 (Unsplash)
 ```
 
 ## 🚀 Быстрый старт
@@ -97,9 +117,12 @@ php -S localhost:8000
 
 ```
 qaz/
-├── index.html       # Основная страница (741 строк)
-├── styles.css       # Премиум стили (1,243 строк)
-├── script.js        # Интерактивность (637 строк)
+├── index.html       # Основная страница (915+ строк)
+├── styles.css       # Премиум стили (1,400+ строк)
+├── script.js        # Интерактивность (800+ строк)
+├── manifest.json    # 🆕 PWA manifest
+├── robots.txt       # 🆕 SEO индексация
+├── sitemap.xml      # 🆕 Карта сайта
 ├── README.md        # Документация
 └── .git/            # Git репозиторий
 ```
@@ -107,6 +130,10 @@ qaz/
 ## 🎯 Полный список функций
 
 ### HTML Features
+- ✅ 🆕 Schema.org JSON-LD structured data
+- ✅ 🆕 Security meta tags (XSS, Frame Options)
+- ✅ 🆕 PWA manifest link
+- ✅ 🆕 Canonical URL
 - ✅ SEO мета-теги (title, description, keywords)
 - ✅ Open Graph теги (Facebook, Twitter)
 - ✅ Favicon (SVG inline)
@@ -115,7 +142,11 @@ qaz/
 - ✅ Валидный HTML5
 
 ### CSS Features
-- ✅ CSS Custom Properties (переменные)
+- ✅ 🆕 Dark Mode CSS variables
+- ✅ 🆕 Theme toggle animations
+- ✅ 🆕 Search modal styles
+- ✅ 🆕 Share menu styles
+- ✅ CSS Custom Properties (50+ переменных)
 - ✅ Flexbox и Grid layouts
 - ✅ Responsive design (3 breakpoints)
 - ✅ Smooth animations
@@ -126,6 +157,12 @@ qaz/
 - ✅ Print styles
 
 ### JavaScript Features
+- ✅ 🆕 Search Modal с instant search
+- ✅ 🆕 Dark Mode toggle с LocalStorage
+- ✅ 🆕 Social sharing (VK, Telegram, WhatsApp)
+- ✅ 🆕 Native Share API support
+- ✅ 🆕 Keyboard navigation (↑↓)
+- ✅ 🆕 Theme persistence
 - ✅ Preloader с анимацией
 - ✅ Mobile menu toggle
 - ✅ Smooth scrolling
@@ -141,17 +178,26 @@ qaz/
 - ✅ Debounce для оптимизации
 - ✅ Error handling
 - ✅ Analytics placeholder
-- ✅ Share API support
 - ✅ Lazy loading images
 
 ## 🎨 Цветовая палитра
 
+### Light Theme
 ```css
 Primary:    #2c3e50  /* Темно-синий */
 Accent:     #c9a961  /* Золотой */
 Secondary:  #3498db  /* Голубой */
 Background: #ffffff  /* Белый */
 Text:       #1a1a1a  /* Почти черный */
+```
+
+### 🆕 Dark Theme
+```css
+Primary:    #f8f9fa  /* Светлый */
+Accent:     #d4a76a  /* Светлое золото */
+Secondary:  #64b5f6  /* Светлый голубой */
+Background: #1a1d23  /* Темный */
+Text:       #e8eaed  /* Светло-серый */
 ```
 
 ## 📱 Адаптивность
@@ -174,17 +220,20 @@ Text:       #1a1a1a  /* Почти черный */
 
 ## 🔍 SEO Оптимизация
 
+- ✅ 🆕 robots.txt для индексации
+- ✅ 🆕 sitemap.xml карта сайта
+- ✅ 🆕 Schema.org JSON-LD
+- ✅ 🆕 Canonical URLs
 - ✅ Семантические HTML5 теги
 - ✅ Meta description
 - ✅ Meta keywords
 - ✅ Open Graph протокол
 - ✅ Twitter Cards
 - ✅ Robots meta tag
-- ✅ Структурированные данные (готовность)
-- ✅ Canonical URL (готовность)
 
 ## ⚡ Производительность
 
+- ✅ 🆕 Font preload для критических шрифтов
 - ✅ Debounce для scroll events
 - ✅ IntersectionObserver для анимаций
 - ✅ Lazy loading изображений
@@ -193,13 +242,23 @@ Text:       #1a1a1a  /* Почти черный */
 - ✅ Оптимизированные transitions
 - ✅ Service Worker готовность (PWA)
 
-## 🎓 Интеграции (Готовность)
+## 🎓 Интеграции
+
+### 🆕 Yandex Metrika
+```javascript
+// Yandex.Metrika готов к активации
+ym(XXXXXXXX, "init", {
+    clickmap:true,
+    trackLinks:true,
+    webvisor:true
+});
+```
 
 ### Analytics
 ```javascript
-// Google Analytics готов к подключению
+// Tracking events
 function trackEvent(category, action, label) {
-    // gtag('event', action, { ... });
+    console.log('Analytics Event:', { category, action, label });
 }
 ```
 
@@ -209,16 +268,22 @@ function trackEvent(category, action, label) {
 newsletterForm.addEventListener('submit', ...);
 ```
 
-### Share API
+### 🆕 Share API
 ```javascript
-// Нативная функция шаринга
-function shareContent(title, url) {
-    if (navigator.share) { ... }
+// Нативная и custom функция шаринга
+if (navigator.share) {
+    navigator.share({ title, url });
+} else {
+    // Custom share menu (VK, Telegram, WhatsApp)
 }
 ```
 
 ## 🔐 Безопасность
 
+- ✅ 🆕 X-Content-Type-Options: nosniff
+- ✅ 🆕 X-Frame-Options: SAMEORIGIN
+- ✅ 🆕 X-XSS-Protection: 1; mode=block
+- ✅ 🆕 Referrer-Policy
 - ✅ XSS защита
 - ✅ HTTPS ready
 - ✅ Content Security Policy ready
@@ -226,43 +291,32 @@ function shareContent(title, url) {
 - ✅ Email validation
 - ✅ Form sanitization
 
-## 🛠️ Кастомизация
-
-### Изменить цвета
-```css
-:root {
-    --primary-color: #2c3e50;  /* Ваш цвет */
-    --accent-color: #c9a961;   /* Ваш акцент */
-}
-```
-
-### Изменить шрифты
-```css
-:root {
-    --font-heading: 'Your Heading Font', serif;
-    --font-body: 'Your Body Font', sans-serif;
-}
-```
-
-### Добавить секцию
-```html
-<section id="your-section" class="category-section">
-    <!-- Ваш контент -->
-</section>
-```
-
 ## 📝 Keyboard Shortcuts
 
 | Комбинация | Действие |
 |-----------|----------|
 | `Ctrl/Cmd + K` | Открыть поиск |
-| `Escape` | Закрыть меню |
+| `↑` `↓` | Навигация по результатам поиска |
+| `Enter` | Открыть выбранный результат |
+| `Escape` | Закрыть модальные окна |
 | `Ctrl + Home` | Скролл вверх |
 | `Ctrl + End` | Скролл вниз |
 
-## 🌟 Улучшения V2.0
+## 🌟 История версий
 
-### Новое
+### V3.0 - Production Enhancement (Текущая)
+- ✅ Функциональный поиск с модальным окном
+- ✅ Dark Mode с автосохранением
+- ✅ Реальные изображения (Unsplash)
+- ✅ Social sharing кнопки
+- ✅ PWA Manifest
+- ✅ SEO оптимизация (robots.txt, sitemap.xml)
+- ✅ Schema.org structured data
+- ✅ Security headers
+- ✅ Yandex Metrika ready
+- ✅ Font optimization
+
+### V2.0 - Premium Enhancement
 - ✅ Preloader с брендированной анимацией
 - ✅ Featured articles секция
 - ✅ Quote секция
@@ -270,21 +324,12 @@ function shareContent(title, url) {
 - ✅ Progress bar чтения
 - ✅ Keyboard shortcuts
 - ✅ Enhanced notifications
-- ✅ Search button
-- ✅ Social media links
-- ✅ Improved mobile UX
-- ✅ Hero background shapes
-- ✅ Card overlays
-- ✅ Reading time indicators
-- ✅ Enhanced footer
 
-### Улучшено
-- ⚡ Лучшая производительность
-- 🎨 Более плавные анимации
-- 📱 Улучшенная адаптивность
-- ♿ Лучшая доступность
-- 🔍 SEO оптимизация
-- 💅 Более премиальный дизайн
+### V1.0 - Initial Release
+- ✅ Базовая структура сайта
+- ✅ 6 категорий контента
+- ✅ Адаптивный дизайн
+- ✅ Базовая интерактивность
 
 ## 📄 Браузерная совместимость
 
@@ -295,18 +340,23 @@ function shareContent(title, url) {
 - ✅ Opera 76+
 - ⚠️ IE11 (не поддерживается)
 
-## 🤝 Вклад
+## 🤝 Roadmap (Будущие функции)
 
-Проект создан как демонстрация премиум дизайна мужского портала.
+### Реализовано ✅
+- [x] Dark mode toggle
+- [x] Advanced search
+- [x] PWA support
+- [x] Social sharing
+- [x] SEO optimization
 
-### Roadmap (Будущие функции)
-- [ ] Dark mode toggle
+### В разработке
+- [ ] Backend для newsletter
+- [ ] Минифицированные версии (CSS/JS)
+- [ ] Service Worker для offline
 - [ ] Multi-language support
-- [ ] Advanced search
 - [ ] User accounts
 - [ ] Comments system
-- [ ] PWA support
-- [ ] Backend integration
+- [ ] Real-time analytics dashboard
 
 ## 📜 Лицензия
 

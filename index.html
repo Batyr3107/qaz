@@ -37,6 +37,97 @@
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#2c3e50">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PREMIUM MEN">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://premiummen.com/">
+
+    <!-- Preload Critical Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "PREMIUM MEN",
+      "alternateName": "Premium Men - Портал для современного мужчины",
+      "url": "https://premiummen.com",
+      "description": "Эксклюзивный портал для успешных мужчин. Мода, технологии, бизнес, фитнес. Экспертные советы, премиум контент, актуальные тренды.",
+      "inLanguage": "ru",
+      "publisher": {
+        "@type": "Organization",
+        "name": "PREMIUM MEN",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://premiummen.com/logo.png"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://premiummen.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Категории PREMIUM MEN",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Мода & Стиль",
+          "url": "https://premiummen.com/#fashion"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Стиль Жизни",
+          "url": "https://premiummen.com/#lifestyle"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Технологии",
+          "url": "https://premiummen.com/#tech"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Фитнес & Здоровье",
+          "url": "https://premiummen.com/#fitness"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Бизнес & Карьера",
+          "url": "https://premiummen.com/#business"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Часы & Аксессуары",
+          "url": "https://premiummen.com/#watches"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Preloader -->
@@ -69,6 +160,22 @@
                     <li><a href="#watches" class="nav-link">Часы</a></li>
                 </ul>
                 <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
                     <button class="search-btn" id="searchBtn" aria-label="Поиск">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -139,7 +246,7 @@
             </div>
             <div class="featured-grid">
                 <article class="featured-card featured-main">
-                    <div class="featured-image" style="background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.8) 100%), url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 600\"><rect fill=\"%232c3e50\" width=\"800\" height=\"600\"/></svg>') center/cover;"></div>
+                    <div class="featured-image" style="background: linear-gradient(135deg, rgba(44, 62, 80, 0.6) 0%, rgba(52, 73, 94, 0.4) 100%), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80') center/cover;"></div>
                     <div class="featured-content">
                         <span class="featured-category">Образ жизни</span>
                         <h3 class="featured-title">Искусство жить красиво: философия современного джентльмена</h3>
@@ -157,7 +264,7 @@
                     </div>
                 </article>
                 <article class="featured-card">
-                    <div class="featured-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="featured-image" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.5) 100%), url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80') center/cover;"></div>
                     <div class="featured-content">
                         <span class="featured-category">Часы</span>
                         <h3 class="featured-title">10 легендарных часов для коллекционера</h3>
@@ -173,7 +280,7 @@
                     </div>
                 </article>
                 <article class="featured-card">
-                    <div class="featured-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="featured-image" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.5) 0%, rgba(245, 87, 108, 0.5) 100%), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80') center/cover;"></div>
                     <div class="featured-content">
                         <span class="featured-category">Бизнес</span>
                         <h3 class="featured-title">Стратегии успеха от топ-менеджеров</h3>
@@ -218,7 +325,7 @@
             <div class="cards-grid">
                 <article class="card card-large">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%), url('https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=800&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -237,7 +344,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.3) 0%, rgba(245, 87, 108, 0.3) 100%), url('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -256,7 +363,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.3) 0%, rgba(0, 242, 254, 0.3) 100%), url('https://images.unsplash.com/photo-1524678714210-9917a6c619c2?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -288,7 +395,7 @@
             <div class="cards-grid">
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(250, 112, 154, 0.3) 0%, rgba(254, 225, 64, 0.3) 100%), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -307,7 +414,7 @@
                 </article>
                 <article class="card card-large">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(48, 207, 208, 0.3) 0%, rgba(51, 8, 103, 0.3) 100%), url('https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -326,7 +433,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(168, 237, 234, 0.3) 0%, rgba(254, 214, 227, 0.3) 100%), url('https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -358,7 +465,7 @@
             <div class="cards-grid">
                 <article class="card card-large">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(255, 8, 68, 0.3) 0%, rgba(255, 177, 153, 0.3) 100%), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -377,7 +484,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #3f2b96 0%, #a8c0ff 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(63, 43, 150, 0.3) 0%, rgba(168, 192, 255, 0.3) 100%), url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -396,7 +503,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #396afc 0%, #2948ff 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(57, 106, 252, 0.3) 0%, rgba(41, 72, 255, 0.3) 100%), url('https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -428,7 +535,7 @@
             <div class="cards-grid">
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(248, 87, 166, 0.3) 0%, rgba(255, 88, 88, 0.3) 100%), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -447,7 +554,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(86, 171, 47, 0.3) 0%, rgba(168, 224, 99, 0.3) 100%), url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -466,7 +573,7 @@
                 </article>
                 <article class="card card-large">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(238, 9, 121, 0.3) 0%, rgba(255, 106, 0, 0.3) 100%), url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -498,7 +605,7 @@
             <div class="cards-grid">
                 <article class="card card-large">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(19, 78, 94, 0.3) 0%, rgba(113, 178, 128, 0.3) 100%), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -517,7 +624,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(15, 32, 39, 0.4) 0%, rgba(44, 83, 100, 0.4) 100%), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -536,7 +643,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(44, 62, 80, 0.3) 0%, rgba(52, 152, 219, 0.3) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -568,7 +675,7 @@
             <div class="cards-grid">
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #000000 0%, #434343 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(67, 67, 67, 0.4) 100%), url('https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -587,7 +694,7 @@
                 </article>
                 <article class="card card-large">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #c79081 0%, #dfa579 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(199, 144, 129, 0.3) 0%, rgba(223, 165, 121, 0.3) 100%), url('https://images.unsplash.com/photo-1622434641406-a158123450f9?w=800&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -606,7 +713,7 @@
                 </article>
                 <article class="card">
                     <div class="card-image-wrapper">
-                        <div class="card-image" style="background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);"></div>
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(189, 195, 199, 0.3) 0%, rgba(44, 62, 80, 0.3) 100%), url('https://images.unsplash.com/photo-1526045478516-99145907023c?w=600&q=80') center/cover;"></div>
                         <div class="card-overlay"></div>
                     </div>
                     <div class="card-content">
@@ -735,6 +842,72 @@
             <path d="M12 19V5M5 12l7-7 7 7"/>
         </svg>
     </button>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-overlay" id="searchModalOverlay"></div>
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <div class="search-input-container">
+                    <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input
+                        type="text"
+                        class="search-input"
+                        id="searchInput"
+                        placeholder="Поиск статей, категорий..."
+                        autocomplete="off"
+                    >
+                    <button class="search-close" id="searchClose" aria-label="Закрыть">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="search-hints">
+                    <span class="search-hint">
+                        <kbd>↵</kbd> открыть
+                    </span>
+                    <span class="search-hint">
+                        <kbd>↑</kbd><kbd>↓</kbd> навигация
+                    </span>
+                    <span class="search-hint">
+                        <kbd>ESC</kbd> закрыть
+                    </span>
+                </div>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-empty">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <p>Начните вводить для поиска</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(XXXXXXXX, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
     <script src="script.js"></script>
 </body>
