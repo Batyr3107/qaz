@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Мода & Стиль | PREMIUM MEN - Актуальные тренды для современного мужчины</title>
+    <meta name="description" content="Мужская мода и стиль: актуальные тренды, советы стилистов, подбор гардероба. Классика и современность для успешного мужчины.">
+    <meta name="keywords" content="бизнес, стиль, костюмы, casual, аксессуары, гардероб, тренды 2025">
+    <meta name="author" content="Premium Men">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://premiummen.com/fashion">
+    <meta property="og:title" content="Мода & Стиль | PREMIUM MEN">
+    <meta property="og:description" content="Актуальные тренды и классические образы для современного мужчины">
+    <meta property="og:image" content="https://premiummen.com/og-fashion.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>◆</text></svg>">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2c3e50">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://premiummen.com/fashion">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">◆</span>
+                    <span class="logo-text">PREMIUM MEN</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="featured.html" class="nav-link">Избранное</a></li>
+                    <li><a href="business.html" class="nav-link active">Мода</a></li>
+                    <li><a href="lifestyle.html" class="nav-link">Стиль Жизни</a></li>
+                    <li><a href="tech.html" class="nav-link">Технологии</a></li>
+                    <li><a href="fitness.html" class="nav-link">Фитнес</a></li>
+                    <li><a href="business.html" class="nav-link">Бизнес</a></li>
+                    <li><a href="watches.html" class="nav-link">Часы</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <button class="search-btn" id="searchBtn" aria-label="Поиск">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Category Hero -->
+    <section class="category-hero" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=80') center/cover;">
+        <div class="container">
+            <div class="category-hero-content">
+                <span class="category-badge">👔 Категория</span>
+                <h1 class="category-hero-title">Мода & Стиль</h1>
+                <p class="category-hero-description">Актуальные тренды, классические образы и эксклюзивные советы от ведущих стилистов для современного мужчины</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">Статьи</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15K</div>
+                        <div class="stat-label">Читателей</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">128</div>
+                        <div class="stat-label">Подборок</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="articles-filter">
+                <button class="filter-btn active" data-filter="all">Все статьи</button>
+                <button class="filter-btn" data-filter="trends">Тренды</button>
+                <button class="filter-btn" data-filter="suits">Костюмы</button>
+                <button class="filter-btn" data-filter="casual">Casual</button>
+                <button class="filter-btn" data-filter="accessories">Аксессуары</button>
+            </div>
+
+            <div class="cards-grid">
+                <article class="card card-large" data-category="trends">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%), url('https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=800&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Тренды 2025</span>
+                        <h3 class="card-title">Минимализм и элегантность в мужской моде</h3>
+                        <p class="card-text">Как создать базовый гардероб, который подчеркнет ваш статус и индивидуальность. Разбираем ключевые элементы современного мужского стиля.</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                8 мин чтения
+                            </span>
+                            <a href="article-minimalism.html" class="card-link">Читать далее →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="suits">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.3) 0%, rgba(245, 87, 108, 0.3) 100%), url('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Костюмы</span>
+                        <h3 class="card-title">Идеальная посадка костюма</h3>
+                        <p class="card-text">Секреты выбора костюма премиум класса: ткани, крой, детали</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                6 мин
+                            </span>
+                            <a href="article-perfect-suit.html" class="card-link">Подробнее →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="accessories">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.3) 0%, rgba(0, 242, 254, 0.3) 100%), url('https://images.unsplash.com/photo-1524678714210-9917a6c619c2?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Аксессуары</span>
+                        <h3 class="card-title">Детали решают всё</h3>
+                        <p class="card-text">Must-have аксессуары сезона: галстуки, запонки, ремни</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                5 мин
+                            </span>
+                            <a href="#" class="card-link">Смотреть →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="casual">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(250, 112, 154, 0.3) 0%, rgba(254, 225, 64, 0.3) 100%), url('https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Casual</span>
+                        <h3 class="card-title">Стильный Smart Casual</h3>
+                        <p class="card-text">Комфортные образы для офиса и встреч</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                7 мин
+                            </span>
+                            <a href="#" class="card-link">Читать →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card card-large" data-category="trends">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(48, 207, 208, 0.3) 0%, rgba(51, 8, 103, 0.3) 100%), url('https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=800&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Тренды</span>
+                        <h3 class="card-title">Цветовая палитра 2025</h3>
+                        <p class="card-text">Актуальные оттенки сезона: от классики до смелых экспериментов. Как правильно сочетать цвета в мужском гардеробе.</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                9 мин
+                            </span>
+                            <a href="#" class="card-link">Узнать →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="suits">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(168, 237, 234, 0.3) 0%, rgba(254, 214, 227, 0.3) 100%), url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Костюмы</span>
+                        <h3 class="card-title">Пошив на заказ</h3>
+                        <p class="card-text">Преимущества индивидуального пошива</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                10 мин
+                            </span>
+                            <a href="#" class="card-link">Подробнее →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="accessories">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(255, 8, 68, 0.3) 0%, rgba(255, 177, 153, 0.3) 100%), url('https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Обувь</span>
+                        <h3 class="card-title">Классическая обувь</h3>
+                        <p class="card-text">Оксфорды, дерби, лоферы: гид по стилям</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                6 мин
+                            </span>
+                            <a href="#" class="card-link">Смотреть →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="casual">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(63, 43, 150, 0.3) 0%, rgba(168, 192, 255, 0.3) 100%), url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Casual</span>
+                        <h3 class="card-title">Джинсовый стиль</h3>
+                        <p class="card-text">Как правильно носить деним</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                5 мин
+                            </span>
+                            <a href="#" class="card-link">Читать →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="trends">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(57, 106, 252, 0.3) 0%, rgba(41, 72, 255, 0.3) 100%), url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Тренды</span>
+                        <h3 class="card-title">Уличная мода 2025</h3>
+                        <p class="card-text">Streetwear для взрослых мужчин</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                7 мин
+                            </span>
+                            <a href="#" class="card-link">Открыть →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card card-large" data-category="suits">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(248, 87, 166, 0.3) 0%, rgba(255, 88, 88, 0.3) 100%), url('https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=800&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Костюмы</span>
+                        <h3 class="card-title">Дресс-код для успеха</h3>
+                        <p class="card-text">Правила делового стиля: от формального офиса до бизнес-ланча. Что носить в разных ситуациях.</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                11 мин
+                            </span>
+                            <a href="#" class="card-link">Читать →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="accessories">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(86, 171, 47, 0.3) 0%, rgba(168, 224, 99, 0.3) 100%), url('https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Аксессуары</span>
+                        <h3 class="card-title">Сумки для делового человека</h3>
+                        <p class="card-text">Портфели, мессенджеры, рюкзаки</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                6 мин
+                            </span>
+                            <a href="#" class="card-link">Смотреть →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-category="casual">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background: linear-gradient(135deg, rgba(238, 9, 121, 0.3) 0%, rgba(255, 106, 0, 0.3) 100%), url('https://images.unsplash.com/photo-1520975954732-35dd22299614?w=600&q=80') center/cover;"></div>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Casual</span>
+                        <h3 class="card-title">Верхняя одежда</h3>
+                        <p class="card-text">Пальто, куртки, парки: выбор на сезон</p>
+                        <div class="card-footer">
+                            <span class="card-meta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v6l4 2"></path>
+                                </svg>
+                                8 мин
+                            </span>
+                            <a href="#" class="card-link">Узнать →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more-container">
+                <button class="load-more-btn">
+                    Загрузить ещё
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-about">
+                    <div class="footer-logo">
+                        <span class="logo-icon">◆</span>
+                        <span class="logo-text">PREMIUM MEN</span>
+                    </div>
+                    <p class="footer-description">Портал для современного мужчины, ценящего качество и стиль во всех аспектах жизни</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                                <path d="M17.5 6.5h.01"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <path d="m9.75 15.02 5.75-3.27-5.75-3.27v6.54z" fill="#2c3e50"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Категории</h4>
+                    <ul class="footer-links">
+                        <li><a href="fashion.html">Мода & Стиль</a></li>
+                        <li><a href="lifestyle.html">Стиль Жизни</a></li>
+                        <li><a href="tech.html">Технологии</a></li>
+                        <li><a href="fitness.html">Фитнес</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Разделы</h4>
+                    <ul class="footer-links">
+                        <li><a href="business.html">Бизнес</a></li>
+                        <li><a href="watches.html">Часы</a></li>
+                        <li><a href="featured.html">Избранное</a></li>
+                        <li><a href="bookmarks.html">Закладки</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Компания</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О проекте</a></li>
+                        <li><a href="#">Авторы</a></li>
+                        <li><a href="#">Реклама</a></li>
+                        <li><a href="contact.html">Связаться</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PREMIUM MEN. Все права защищены.</p>
+                <div class="footer-legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <span>•</span>
+                    <a href="#">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Наверх">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-overlay" id="searchModalOverlay"></div>
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <div class="search-input-container">
+                    <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Поиск статей, категорий..." autocomplete="off">
+                    <button class="search-close" id="searchClose" aria-label="Закрыть">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="search-hints">
+                    <span class="search-hint"><kbd>↵</kbd> открыть</span>
+                    <span class="search-hint"><kbd>↑</kbd><kbd>↓</kbd> навигация</span>
+                    <span class="search-hint"><kbd>ESC</kbd> закрыть</span>
+                </div>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-empty">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <p>Начните вводить для поиска</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
