@@ -1327,5 +1327,404 @@ console.log('%c\n💎 Разработано с вниманием к детал
     'font-size: 12px; font-style: italic; color: #c9a961;');
 
 // ===========================
+// ULTRA PREMIUM v5.5
+// Advanced Features
+// ===========================
+
+// Premium Particles Background
+function createParticles() {
+    const heroSections = document.querySelectorAll('.hero, .category-hero');
+
+    heroSections.forEach(section => {
+        // Create canvas for particles
+        const canvas = document.createElement('canvas');
+        canvas.classList.add('particles-canvas');
+        canvas.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        `;
+
+        section.style.position = 'relative';
+        section.insertBefore(canvas, section.firstChild);
+
+        const ctx = canvas.getContext('2d');
+        canvas.width = section.offsetWidth;
+        canvas.height = section.offsetHeight;
+
+        // Particles array
+        const particles = [];
+        const particleCount = 50;
+
+        // Particle class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Wrap around edges
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(201, 169, 97, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        // Initialize particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Draw connections
+            particles.forEach((p1, i) => {
+                particles.slice(i + 1).forEach(p2 => {
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(201, 169, 97, ${0.15 * (1 - distance / 100)})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = section.offsetWidth;
+            canvas.height = section.offsetHeight;
+        });
+    });
+}
+
+// Initialize particles if hero exists
+if (document.querySelector('.hero, .category-hero')) {
+    createParticles();
+}
+
+// Magnetic Button Effect
+function createMagneticEffect() {
+    const buttons = document.querySelectorAll('.cta-btn, .btn-primary, .form-submit-btn');
+
+    buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            const moveX = x * 0.3;
+            const moveY = y * 0.3;
+
+            button.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+        });
+
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translate(0, 0) scale(1)';
+        });
+    });
+}
+
+createMagneticEffect();
+
+// Floating Labels for Forms
+function initFloatingLabels() {
+    const formGroups = document.querySelectorAll('.form-group');
+
+    formGroups.forEach(group => {
+        const input = group.querySelector('input, textarea');
+        const label = group.querySelector('label');
+
+        if (input && label) {
+            // Check if input has value on load
+            if (input.value) {
+                label.classList.add('floating');
+            }
+
+            input.addEventListener('focus', () => {
+                label.classList.add('floating');
+            });
+
+            input.addEventListener('blur', () => {
+                if (!input.value) {
+                    label.classList.remove('floating');
+                }
+            });
+
+            input.addEventListener('input', () => {
+                if (input.value) {
+                    label.classList.add('floating');
+                } else {
+                    label.classList.remove('floating');
+                }
+            });
+        }
+    });
+}
+
+if (document.querySelector('.form-group')) {
+    initFloatingLabels();
+}
+
+// Premium Hover Micro-Animations
+function enhanceHoverEffects() {
+    // Links with underline animation
+    const links = document.querySelectorAll('a:not(.btn):not(.cta-btn):not(.nav-link)');
+    links.forEach(link => {
+        if (!link.closest('.card')) {
+            link.style.position = 'relative';
+            link.style.transition = 'color 0.3s ease';
+        }
+    });
+
+    // Image zoom on hover
+    const images = document.querySelectorAll('.card-image, .article-image');
+    images.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+
+        img.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+
+    // Icon rotation on hover
+    const icons = document.querySelectorAll('.value-icon svg, .stat-icon svg');
+    icons.forEach(icon => {
+        icon.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+
+        icon.parentElement.addEventListener('mouseenter', () => {
+            icon.style.transform = 'rotate(360deg) scale(1.1)';
+        });
+
+        icon.parentElement.addEventListener('mouseleave', () => {
+            icon.style.transform = 'rotate(0deg) scale(1)';
+        });
+    });
+}
+
+enhanceHoverEffects();
+
+// Advanced Page Transitions
+function enhancePageTransitions() {
+    // Fade out on link click
+    const pageLinks = document.querySelectorAll('a[href$=".html"]');
+
+    pageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Skip if opening in new tab
+            if (e.ctrlKey || e.metaKey || e.shiftKey || this.target === '_blank') {
+                return;
+            }
+
+            const href = this.getAttribute('href');
+
+            // Don't prevent if same page
+            if (href === window.location.pathname.split('/').pop()) {
+                return;
+            }
+
+            e.preventDefault();
+
+            // Fade out effect
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+
+            setTimeout(() => {
+                window.location.href = href;
+            }, 300);
+        });
+    });
+}
+
+enhancePageTransitions();
+
+// Tilt Effect for Cards
+function createTiltEffect() {
+    const cards = document.querySelectorAll('.card, .team-member, .value-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+
+        card.style.transition = 'transform 0.2s ease';
+    });
+}
+
+createTiltEffect();
+
+// Smooth Scroll with Easing
+function smoothScrollTo(target, duration = 1000) {
+    const start = window.pageYOffset;
+    const end = target.offsetTop - 80;
+    const distance = end - start;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutCubic(timeElapsed, start, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    function easeInOutCubic(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+    }
+
+    requestAnimationFrame(animation);
+}
+
+// Update anchor link smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || href === '#search') return;
+
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            smoothScrollTo(target);
+        }
+    });
+});
+
+// Intersection Observer for Staggered Animations
+function createStaggeredAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const elements = document.querySelectorAll('.card, .team-member, .value-card, .faq-item');
+    elements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+}
+
+createStaggeredAnimations();
+
+// Premium Loading Animation
+function createLoadingAnimation() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .premium-loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            z-index: 10001;
+        }
+
+        .premium-loading::before,
+        .premium-loading::after {
+            content: '';
+            position: absolute;
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            animation: pulse-ring 1.5s ease-out infinite;
+        }
+
+        .premium-loading::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .premium-loading::after {
+            width: 100%;
+            height: 100%;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+createLoadingAnimation();
+
+console.log('%c\n🚀 v5.5 Features Loaded:',
+    'font-size: 14px; font-weight: bold; color: #c9a961;');
+console.log('%c• Particles background\n• Magnetic buttons\n• Tilt effect cards\n• Floating labels\n• Enhanced transitions',
+    'font-size: 12px; color: #3498db; line-height: 1.8;');
+
+// ===========================
 // END PREMIUM FEATURES V5.0
 // ===========================

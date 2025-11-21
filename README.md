@@ -1,8 +1,8 @@
-# ◆ PREMIUM MEN - Ультра-Премиум Многостраничный Портал
+# ◆ PREMIUM MEN - Beyond Premium Многостраничный Портал
 
-> Революционный веб-сайт уровня 12/10 с премиум-анимациями, glassmorphism эффектами, parallax scrolling и продвинутыми интерактивными возможностями
+> Революционный веб-сайт уровня 15/10 с canvas particles, magnetic эффектами, 3D tilt, floating labels и продвинутыми микро-анимациями
 
-[![Version](https://img.shields.io/badge/version-5.0_ULTRA_PREMIUM-gold.svg)](https://github.com)
+[![Version](https://img.shields.io/badge/version-5.5_BEYOND_PREMIUM-gold.svg)](https://github.com)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-production%20ready-success.svg)](README.md)
 [![PWA](https://img.shields.io/badge/PWA-ready-brightgreen.svg)](manifest.json)
@@ -10,8 +10,65 @@
 [![Pages](https://img.shields.io/badge/pages-12-orange.svg)](README.md)
 [![Animations](https://img.shields.io/badge/animations-premium-ff69b4.svg)](styles.css)
 [![Effects](https://img.shields.io/badge/effects-glassmorphism-blueviolet.svg)](styles.css)
+[![Particles](https://img.shields.io/badge/particles-canvas-cyan.svg)](script.js)
+[![3D](https://img.shields.io/badge/3D-tilt_effect-ff6b6b.svg)](script.js)
 
-## 💎 Что нового в версии 5.0 - ULTRA PREMIUM
+## 🚀 Что нового в версии 5.5 - BEYOND PREMIUM
+
+### 🎨 Canvas Particles Background
+- **50 анимированных частиц** на hero-секциях
+- **Соединительные линии** между близкими частицами
+- **Плавное движение** с wrap-around эффектом
+- **Автоматический resize** при изменении окна
+- **Оптимизация** - скрыто на мобильных
+
+### 🧲 Magnetic Button Effect
+- **Магнитный эффект** - кнопки следуют за курсором
+- **Плавное движение** до 30% от расстояния
+- **Масштабирование** до 1.05 при hover
+- **Применяется** ко всем CTA и primary кнопкам
+
+### 🎯 3D Tilt Effect для карточек
+- **Перспективное вращение** при движении мыши
+- **RotateX и RotateY** на основе позиции курсора
+- **Scale3D** до 1.02 при hover
+- **Применяется** к card, team-member, value-card
+
+### 📝 Floating Labels для форм
+- **Анимированные лейблы** поднимаются при фокусе
+- **Меняют цвет** на accent при активности
+- **Запоминают состояние** при заполнении
+- **Material Design** стиль
+
+### ✨ Staggered Animations
+- **Последовательное появление** элементов
+- **Задержка 100ms** между элементами
+- **Intersection Observer** для производительности
+- **Fade in + Slide up** анимации
+
+### 🎭 Микро-анимации
+- **Icon rotation** 360° при hover
+- **Image zoom** 1.05 при hover
+- **Link color change** на accent
+- **Enhanced scrollbar** с градиентом
+
+### 🌊 Smooth Scroll с Easing
+- **Cubic easing** функция
+- **1 секунда** длительность
+- **80px offset** для навигации
+- **requestAnimationFrame** оптимизация
+
+### 🔄 Enhanced Page Transitions
+- **Fade out** при переходе (300ms)
+- **Пропуск** для Ctrl/Cmd клика
+- **Плавная навигация** между страницами
+
+### 🎨 Premium Selection & Scrollbar
+- **Кастомный ::selection** с accent цветом
+- **Градиентный scrollbar** с hover эффектом
+- **12px ширина** для удобства
+
+## 💎 Версия 5.0 - ULTRA PREMIUM
 
 ### ✨ Премиум Анимации
 - **Scroll Animations** - Элементы появляются при прокрутке (Intersection Observer)

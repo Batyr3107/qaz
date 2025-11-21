@@ -3521,3 +3521,207 @@ body[data-theme="dark"] .navbar.scrolled {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ===========================
+   ULTRA PREMIUM v5.5
+   Advanced Features CSS
+   =========================== */
+
+/* Floating Labels for Forms */
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    color: var(--text-light);
+    background: var(--bg-primary);
+    padding: 0 0.5rem;
+    font-size: 1rem;
+}
+
+.form-group label.floating {
+    top: -0.5rem;
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.form-group textarea ~ label {
+    top: 1.5rem;
+}
+
+.form-group textarea ~ label.floating {
+    top: -0.5rem;
+}
+
+/* Enhanced Input Focus States */
+.form-input:focus,
+.form-textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+}
+
+/* Particles Canvas */
+.particles-canvas {
+    opacity: 0.6;
+}
+
+body[data-theme="dark"] .particles-canvas {
+    opacity: 0.4;
+}
+
+/* Tilt Effect Enhancement */
+.card,
+.team-member,
+.value-card {
+    transform-style: preserve-3d;
+}
+
+/* Magnetic Button Enhancement */
+.cta-btn,
+.btn-primary,
+.form-submit-btn {
+    transform-origin: center;
+}
+
+/* Enhanced Link Hover */
+a:not(.btn):not(.cta-btn):not(.nav-link):hover {
+    color: var(--accent-color);
+}
+
+/* Icon Hover Enhancement */
+.value-icon,
+.stat-icon {
+    overflow: visible;
+}
+
+.value-icon svg,
+.stat-icon svg {
+    will-change: transform;
+}
+
+/* Enhanced Scroll Progress */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+    z-index: 10000;
+    box-shadow: 0 0 10px rgba(201, 169, 97, 0.5);
+}
+
+/* Premium Glow on Active Elements */
+.cta-btn:active,
+.btn-primary:active,
+.form-submit-btn:active {
+    box-shadow: 0 0 30px rgba(201, 169, 97, 0.6);
+}
+
+/* Enhanced Dark Mode for New Features */
+body[data-theme="dark"] .form-group label {
+    background: var(--bg-primary);
+}
+
+body[data-theme="dark"] .form-group label.floating {
+    color: var(--accent-color);
+}
+
+/* 3D Perspective for Hero */
+.hero,
+.category-hero {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* Premium Card Shadow on Tilt */
+.card:hover,
+.team-member:hover,
+.value-card:hover {
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(201, 169, 97, 0.1);
+}
+
+/* Enhanced Focus Visible */
+*:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+/* Smooth Scroll Behavior Enhancement */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* Premium Selection */
+::selection {
+    background: var(--accent-color);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Enhanced Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent-color), var(--secondary-color));
+    border-radius: 6px;
+    border: 2px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--secondary-color), var(--accent-color));
+}
+
+/* Premium Mobile Optimization */
+@media (max-width: 768px) {
+    .particles-canvas {
+        display: none;
+    }
+
+    .premium-cursor {
+        display: none;
+    }
+}
+
+/* Enhanced Tablet View */
+@media (max-width: 992px) {
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group label.floating {
+        font-size: 0.7rem;
+    }
+}
+
+/* Premium Print Styles */
+@media print {
+    .particles-canvas,
+    .premium-cursor,
+    .scroll-progress {
+        display: none !important;
+    }
+}
+
+/* ===========================
+   END ULTRA PREMIUM v5.5
+   =========================== */
