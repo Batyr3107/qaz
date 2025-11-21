@@ -962,3 +962,370 @@ window.addEventListener('error', function(e) {
 window.addEventListener('unhandledrejection', function(e) {
     console.error('Unhandled promise rejection:', e.reason);
 });
+
+// ===========================
+// PREMIUM FEATURES V5.0
+// Ultra-Premium Enhancements
+// ===========================
+
+// Premium Navbar Scroll Effect
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Add scrolled class for glassmorphism effect
+    if (scrollTop > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+}, { passive: true });
+
+// Premium Parallax Effect for Hero Sections
+function premiumParallax() {
+    const parallaxElements = document.querySelectorAll('.hero, .category-hero');
+
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+
+        parallaxElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+                element.style.backgroundPosition = `center ${yPos}px`;
+            }
+        });
+    }, { passive: true });
+}
+
+// Initialize parallax if elements exist
+if (document.querySelector('.hero, .category-hero')) {
+    premiumParallax();
+}
+
+// Premium Scroll Animations with Intersection Observer
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+function handleIntersection(entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-up');
+            // Optional: unobserve after animation to improve performance
+            observer.unobserve(entry.target);
+        }
+    });
+}
+
+const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+// Observe cards and sections for scroll animations
+const animateOnScroll = document.querySelectorAll('.card, .team-member, .value-card, .stat-item, .faq-item');
+animateOnScroll.forEach(element => {
+    observer.observe(element);
+});
+
+// Premium Smooth Scroll for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+
+        // Skip if it's just "#" or "#search"
+        if (href === '#' || href === '#search') return;
+
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            const offsetTop = target.offsetTop - 80; // Account for navbar height
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Premium Card Hover Effect Enhancement
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+    card.addEventListener('mouseenter', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Create subtle spotlight effect
+        this.style.setProperty('--mouse-x', `${x}px`);
+        this.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
+
+// Premium Button Ripple Effect
+function createRipple(event) {
+    const button = event.currentTarget;
+
+    const circle = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+    circle.classList.add('ripple-effect');
+
+    const ripple = button.getElementsByClassName('ripple-effect')[0];
+
+    if (ripple) {
+        ripple.remove();
+    }
+
+    button.appendChild(circle);
+}
+
+const rippleButtons = document.querySelectorAll('.cta-btn, .btn-primary, .form-submit-btn, .filter-btn');
+rippleButtons.forEach(button => {
+    button.addEventListener('click', createRipple);
+});
+
+// Premium Stats Counter Animation
+function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16); // 60fps
+    let current = start;
+
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+}
+
+// Animate stats when they come into view
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statNumber = entry.target.querySelector('.stat-number');
+            if (statNumber && !statNumber.dataset.animated) {
+                const target = parseInt(statNumber.textContent);
+                statNumber.dataset.animated = 'true';
+                animateCounter(statNumber, target);
+            }
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-item').forEach(stat => {
+    statsObserver.observe(stat);
+});
+
+// Premium Image Lazy Loading with Fade-in
+function premiumLazyLoad() {
+    const lazyImages = document.querySelectorAll('img[data-src]');
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.6s ease';
+
+                img.onload = () => {
+                    img.style.opacity = '1';
+                    img.removeAttribute('data-src');
+                };
+
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+}
+
+premiumLazyLoad();
+
+// Premium Cursor Effect (optional, for desktop)
+if (window.innerWidth > 1024) {
+    const cursor = document.createElement('div');
+    cursor.classList.add('premium-cursor');
+    cursor.style.cssText = `
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--accent-color);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translate(-50%, -50%);
+    `;
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        cursor.style.opacity = '0.6';
+    });
+
+    document.addEventListener('mouseout', () => {
+        cursor.style.opacity = '0';
+    });
+
+    // Enhance cursor on interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .card, input, textarea');
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            cursor.style.borderColor = 'var(--secondary-color)';
+        });
+
+        element.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursor.style.borderColor = 'var(--accent-color)';
+        });
+    });
+}
+
+// Premium Text Reveal Animation
+function premiumTextReveal() {
+    const textElements = document.querySelectorAll('.hero-title, .category-hero-title, .section-title');
+
+    textElements.forEach(element => {
+        const text = element.textContent;
+        element.innerHTML = '';
+
+        // Split text into words
+        text.split(' ').forEach((word, wordIndex) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.style.display = 'inline-block';
+            wordSpan.style.overflow = 'hidden';
+
+            const innerSpan = document.createElement('span');
+            innerSpan.textContent = word + ' ';
+            innerSpan.style.display = 'inline-block';
+            innerSpan.style.animation = `premium-slide-up 0.8s ease-out ${wordIndex * 0.1}s both`;
+
+            wordSpan.appendChild(innerSpan);
+            element.appendChild(wordSpan);
+        });
+    });
+}
+
+// Initialize text reveal on page load
+if (document.readyState === 'complete') {
+    premiumTextReveal();
+} else {
+    window.addEventListener('load', premiumTextReveal);
+}
+
+// Premium Performance Monitor (Development only)
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    let performanceMetrics = {
+        fps: 0,
+        lastFrameTime: performance.now()
+    };
+
+    function measureFPS() {
+        const now = performance.now();
+        performanceMetrics.fps = Math.round(1000 / (now - performanceMetrics.lastFrameTime));
+        performanceMetrics.lastFrameTime = now;
+        requestAnimationFrame(measureFPS);
+    }
+
+    requestAnimationFrame(measureFPS);
+
+    // Log metrics every 5 seconds
+    setInterval(() => {
+        console.log('🚀 Premium Performance:', {
+            FPS: performanceMetrics.fps,
+            Memory: performance.memory ? `${(performance.memory.usedJSHeapSize / 1048576).toFixed(2)} MB` : 'N/A'
+        });
+    }, 5000);
+}
+
+// Premium Page Transition Effect
+function premiumPageTransition() {
+    // Fade in page content
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+}
+
+premiumPageTransition();
+
+// Premium Scroll Progress Indicator
+function createScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+        z-index: 10000;
+        transition: width 0.1s linear;
+        width: 0%;
+    `;
+    document.body.appendChild(progressBar);
+
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+    }, { passive: true });
+}
+
+createScrollProgress();
+
+// Premium Easter Egg - Konami Code
+let konamiCode = [];
+const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.key);
+    konamiCode = konamiCode.slice(-10);
+
+    if (konamiCode.join('') === konamiPattern.join('')) {
+        // Easter egg activated!
+        document.body.style.animation = 'premium-gradient 2s ease infinite';
+        setTimeout(() => {
+            alert('🎉 PREMIUM MODE ACTIVATED! 🎉\n\nYou discovered the secret!');
+            document.body.style.animation = '';
+        }, 100);
+        konamiCode = [];
+    }
+});
+
+// Premium Console Welcome Message
+console.log('%c◆ PREMIUM MEN v5.0 ◆',
+    'font-size: 24px; font-weight: bold; color: #c9a961; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
+console.log('%cУльтра-премиум портал с расширенными возможностями',
+    'font-size: 14px; color: #3498db;');
+console.log('%c• Glassmorphism эффекты\n• Parallax scrolling\n• Scroll animations\n• Premium transitions\n• Performance optimized',
+    'font-size: 12px; color: #7a7a7a; line-height: 1.8;');
+
+console.log('%c\n💎 Разработано с вниманием к деталям',
+    'font-size: 12px; font-style: italic; color: #c9a961;');
+
+// ===========================
+// END PREMIUM FEATURES V5.0
+// ===========================
